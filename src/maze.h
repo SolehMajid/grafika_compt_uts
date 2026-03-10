@@ -1,9 +1,9 @@
 #ifndef MAZE_H
 #define MAZE_H
 
-#define WIDTH 10
-#define HEIGHT 10
-#define CELL_SIZE 10
+#define WIDTH 7
+#define HEIGHT 7
+#define CELL_SIZE 2
 
 typedef struct {
     int x1, x2;
