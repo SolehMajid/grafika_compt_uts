@@ -23,9 +23,11 @@ struct  movement
     float y;
 };
 
+
 void reInitMaze();
 
 movement player {0.0, 0.0};
+movement c_nim {1.0,1.0};
 
 void display()
 {
@@ -50,6 +52,26 @@ void display()
     glColor3f(1.0, 0.0, 0.0);
     glRectf(player.x * CELL_SIZE, player.y * CELL_SIZE,(player.x + 1) * CELL_SIZE, (player.y + 1) * CELL_SIZE);
 
+    glColor3f(0.0,0.0,0.0);
+    
+    glRectf(c_nim.x + 0.3, c_nim.y+0.0, c_nim.x + 0.8, c_nim.y + 0.2); //bawah
+    glRectf(c_nim.x + 0.0, c_nim.y+0.0, c_nim.x + 0.2, c_nim.y + 0.5); //kiri bawah
+    glRectf(c_nim.x + 0.3, c_nim.y+0.5, c_nim.x + 0.8, c_nim.y + 0.7); // tengah
+    glRectf(c_nim.x + 0.0, c_nim.y+0.7, c_nim.x + 0.2, c_nim.y + 1.2); // kiri atas
+    glRectf(c_nim.x + 0.3, c_nim.y+1.0, c_nim.x + 0.8, c_nim.y + 1.2); // atas
+    glRectf(c_nim.x + 0.9, c_nim.y+0.0, c_nim.x + 1.1, c_nim.y + 0.5); //kanan bawah
+    glRectf(c_nim.x + 0.9, c_nim.y+0.7, c_nim.x + 1.1, c_nim.y + 1.2); // kanan atas
+
+    glRectf(c_nim.x + 1.4 + 0.3, c_nim.y+0.0, c_nim.x + 1.4 + 0.8, c_nim.y + 0.2); //bawah
+    glRectf(c_nim.x + 1.4 + 0.0, c_nim.y+0.0, c_nim.x + 1.4 + 0.2, c_nim.y + 0.5); //kiri bawah
+    glRectf(c_nim.x + 1.4 + 0.3, c_nim.y+0.5, c_nim.x + 1.4 + 0.8, c_nim.y + 0.7); // tengah
+    glRectf(c_nim.x + 1.4 + 0.0, c_nim.y+0.7, c_nim.x + 1.4 + 0.2, c_nim.y + 1.2); // kiri atas
+    glRectf(c_nim.x + 1.4 + 0.3, c_nim.y+1.0, c_nim.x + 1.4 + 0.8, c_nim.y + 1.2); // atas
+    glRectf(c_nim.x + 1.4 + 0.9, c_nim.y+0.0, c_nim.x + 1.4 + 1.1, c_nim.y + 0.5); //kanan bawah
+    glRectf(c_nim.x + 1.4 + 0.9, c_nim.y+0.7, c_nim.x + 1.4 + 1.1, c_nim.y + 1.2); // kanan atas
+
+
+    // glRectf(c_nim.x + 0.0, c_nim.y+0.0, c_nim.x + 0.5, c_nim.y + 0.2);
 
     
 
@@ -102,11 +124,15 @@ void keyboard(unsigned char key, int x, int y)
     }
 }
 
+float random() {
+    return (float) rand() / (float)RAND_MAX;
+}
 
 void reInitMaze(){
     srand(time(NULL));
     initMaze(&maze);
     divide(&maze, 0, 0, WIDTH, HEIGHT);
+    c_nim = { random() * (float)((WIDTH * CELL_SIZE) - 2.8), random() * (float)((HEIGHT * CELL_SIZE) - 2.8) };
     glutDisplayFunc(display);
     glutPostRedisplay();
 }
