@@ -26,7 +26,8 @@ struct  movement
 
 void reInitMaze();
 
-movement player {0.0, 0.0};
+int scene = 0;
+movement player;
 movement c_nim {1.0,1.0};
 
 void display()
@@ -54,24 +55,30 @@ void display()
 
     glColor3f(0.0,0.0,0.0);
     
-    glRectf(c_nim.x + 0.3, c_nim.y+0.0, c_nim.x + 0.8, c_nim.y + 0.2); //bawah
-    glRectf(c_nim.x + 0.0, c_nim.y+0.0, c_nim.x + 0.2, c_nim.y + 0.5); //kiri bawah
-    glRectf(c_nim.x + 0.3, c_nim.y+0.5, c_nim.x + 0.8, c_nim.y + 0.7); // tengah
-    glRectf(c_nim.x + 0.0, c_nim.y+0.7, c_nim.x + 0.2, c_nim.y + 1.2); // kiri atas
-    glRectf(c_nim.x + 0.3, c_nim.y+1.0, c_nim.x + 0.8, c_nim.y + 1.2); // atas
-    glRectf(c_nim.x + 0.9, c_nim.y+0.0, c_nim.x + 1.1, c_nim.y + 0.5); //kanan bawah
-    glRectf(c_nim.x + 0.9, c_nim.y+0.7, c_nim.x + 1.1, c_nim.y + 1.2); // kanan atas
+    glRectf(c_nim.x + 0.3, c_nim.y+0.0, c_nim.x + 0.8, c_nim.y + 0.2); 
+    glRectf(c_nim.x + 0.0, c_nim.y+0.0, c_nim.x + 0.2, c_nim.y + 0.5); 
+    // glRectf(c_nim.x + 0.3, c_nim.y+0.5, c_nim.x + 0.8, c_nim.y + 0.7);
+    glRectf(c_nim.x + 0.0, c_nim.y+0.7, c_nim.x + 0.2, c_nim.y + 1.2); 
+    glRectf(c_nim.x + 0.3, c_nim.y+1.0, c_nim.x + 0.8, c_nim.y + 1.2); 
+    glRectf(c_nim.x + 0.9, c_nim.y+0.0, c_nim.x + 1.1, c_nim.y + 0.5); 
+    glRectf(c_nim.x + 0.9, c_nim.y+0.7, c_nim.x + 1.1, c_nim.y + 1.2); 
 
-    glRectf(c_nim.x + 1.4 + 0.3, c_nim.y+0.0, c_nim.x + 1.4 + 0.8, c_nim.y + 0.2); //bawah
-    glRectf(c_nim.x + 1.4 + 0.0, c_nim.y+0.0, c_nim.x + 1.4 + 0.2, c_nim.y + 0.5); //kiri bawah
-    glRectf(c_nim.x + 1.4 + 0.3, c_nim.y+0.5, c_nim.x + 1.4 + 0.8, c_nim.y + 0.7); // tengah
-    glRectf(c_nim.x + 1.4 + 0.0, c_nim.y+0.7, c_nim.x + 1.4 + 0.2, c_nim.y + 1.2); // kiri atas
-    glRectf(c_nim.x + 1.4 + 0.3, c_nim.y+1.0, c_nim.x + 1.4 + 0.8, c_nim.y + 1.2); // atas
-    glRectf(c_nim.x + 1.4 + 0.9, c_nim.y+0.0, c_nim.x + 1.4 + 1.1, c_nim.y + 0.5); //kanan bawah
-    glRectf(c_nim.x + 1.4 + 0.9, c_nim.y+0.7, c_nim.x + 1.4 + 1.1, c_nim.y + 1.2); // kanan atas
+    // glRectf(c_nim.x + 1.4 + 0.3, c_nim.y+0.0, c_nim.x + 1.4 + 0.8, c_nim.y + 0.2); 
+    // glRectf(c_nim.x + 1.4 + 0.0, c_nim.y+0.0, c_nim.x + 1.4 + 0.2, c_nim.y + 0.5);
+    // glRectf(c_nim.x + 1.4 + 0.3, c_nim.y+0.5, c_nim.x + 1.4 + 0.8, c_nim.y + 0.7);
+    // glRectf(c_nim.x + 1.4 + 0.0, c_nim.y+0.7, c_nim.x + 1.4 + 0.2, c_nim.y + 1.2);
+    glRectf(c_nim.x + 1.4 + 0.3, c_nim.y+1.0, c_nim.x + 1.4 + 0.8, c_nim.y + 1.2);
+    glRectf(c_nim.x + 1.4 + 0.9, c_nim.y+0.0, c_nim.x + 1.4 + 1.1, c_nim.y + 0.5);
+    glRectf(c_nim.x + 1.4 + 0.9, c_nim.y+0.7, c_nim.x + 1.4 + 1.1, c_nim.y + 1.2);
 
+    glRectf(c_nim.x + 2.8 + 0.3, c_nim.y+0.0, c_nim.x + 2.8 + 0.8, c_nim.y + 0.2); 
+    glRectf(c_nim.x + 2.8 + 0.0, c_nim.y+0.0, c_nim.x + 2.8 + 0.2 , c_nim.y + 0.5); 
+    glRectf(c_nim.x + 2.8 + 0.3, c_nim.y+0.5, c_nim.x + 2.8 + 0.8, c_nim.y + 0.7); 
+    glRectf(c_nim.x + 2.8 + 0.0, c_nim.y+0.7, c_nim.x + 2.8 + 0.2, c_nim.y + 1.2); 
+    glRectf(c_nim.x + 2.8 + 0.3, c_nim.y+1.0, c_nim.x + 2.8 + 0.8 + 0.2, c_nim.y + 1.2); 
+    glRectf(c_nim.x + 2.8 + 0.9, c_nim.y+0.0, c_nim.x + 2.8 + 1.1, c_nim.y + 0.5);
+    // glRectf(c_nim.x + 2.8 + 0.9, c_nim.y+0.7, c_nim.x + 2.8 + 1.1, c_nim.y + 1.2); 
 
-    // glRectf(c_nim.x + 0.0, c_nim.y+0.0, c_nim.x + 0.5, c_nim.y + 0.2);
 
     
 
@@ -129,10 +136,16 @@ float random() {
 }
 
 void reInitMaze(){
+    if (scene %2 == 0){
+        player = {(WIDTH)/2,HEIGHT-1};
+    } else {
+        player = {(WIDTH)/2,0};
+    }
+    scene += 1;
     srand(time(NULL));
     initMaze(&maze);
     divide(&maze, 0, 0, WIDTH, HEIGHT);
-    c_nim = { random() * (float)((WIDTH * CELL_SIZE) - 2.8), random() * (float)((HEIGHT * CELL_SIZE) - 2.8) };
+    c_nim = { random() * (float)((WIDTH * CELL_SIZE) - 4.2), random() * (float)((HEIGHT * CELL_SIZE) - 4.2) };
     glutDisplayFunc(display);
     glutPostRedisplay();
 }

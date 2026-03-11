@@ -11,6 +11,8 @@ typedef struct {
     int wall;
 } Cell;
 
+
+
 typedef struct {
     Cell grid[HEIGHT][WIDTH];
 } Maze;
