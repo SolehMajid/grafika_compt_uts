@@ -32,12 +32,16 @@ target_link_libraries(main PRIVATE
     GLUT::GLUT
 )
 
-# install binary
 install(TARGETS main DESTINATION bin)
 
-# packaging
 set(CPACK_PACKAGE_NAME "maze")
 set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
 set(CPACK_GENERATOR "DEB;RPM")
+set(CPACK_PACKAGE_CONTACT "yohanes@example.com")
+set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Yohanes Oktanio")
+set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "OpenGL Maze Game")
+set(CPACK_DEBIAN_PACKAGE_DEPENDS
+    "freeglut3, libglu1-mesa, libgl1"
+)
 
 include(CPack)
