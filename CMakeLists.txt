@@ -9,6 +9,7 @@
 #  OpenGL + GLUT based graphics project (multiple targets).
 #  Message : Mesakno Developere Mas/Mbak. Jajal Tukokno Maem
 # ====================================================
+
 cmake_minimum_required(VERSION 3.10)
 
 project(GLUTApp VERSION 1.0)
@@ -37,9 +38,9 @@ install(TARGETS main DESTINATION bin)
 set(CPACK_PACKAGE_NAME "maze")
 set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
 set(CPACK_GENERATOR "DEB;RPM")
-set(CPACK_PACKAGE_CONTACT "yohanes@example.com")
+set(CPACK_PACKAGE_CONTACT "yohanes@oktanio.dev")
 set(CPACK_DEBIAN_PACKAGE_MAINTAINER "Yohanes Oktanio")
-set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "OpenGL Maze Game")
+set(CPACK_DEBIAN_PACKAGE_DESCRIPTION "OpenGL Maze Game - UTS")
 set(CPACK_DEBIAN_PACKAGE_DEPENDS
     "freeglut3, libglu1-mesa, libgl1"
 )
