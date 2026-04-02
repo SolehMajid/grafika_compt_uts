@@ -49,39 +49,39 @@ void display()
             }
         }
     }
-    glColor3f(1.0, 0.0, 0.0);
-    glRectf(player.x * CELL_SIZE, player.y * CELL_SIZE,(player.x + 1) * CELL_SIZE, (player.y + 1) * CELL_SIZE);
-
+    
     glColor3f(0.0,0.0,0.0);
     
     float scale = 0.5;
     float baseX = c_nim.x * CELL_SIZE + CELL_SIZE/2;
     float baseY = c_nim.y * CELL_SIZE + CELL_SIZE/2;
-
+    
     // angka 0
     glRectf(baseX + (-1.8)*scale, baseY + (1.6)*scale, baseX + (-1.0)*scale, baseY + (1.8)*scale);
     glRectf(baseX + (-1.8)*scale, baseY + (-1.8)*scale, baseX + (-1.0)*scale, baseY + (-1.6)*scale);
     glRectf(baseX + (-1.8)*scale, baseY + (-1.6)*scale, baseX + (-1.6)*scale, baseY + (1.6)*scale);
     glRectf(baseX + (-1.2)*scale, baseY + (-1.6)*scale, baseX + (-1.0)*scale, baseY + (1.6)*scale);
-
+    
     // angka 7
     glRectf(baseX + (-0.8)*scale, baseY + (1.6)*scale, baseX + (0.6)*scale, baseY + (1.8)*scale);
-
+    
     glBegin(GL_POLYGON);
     glVertex2f(baseX + (-0.8)*scale, baseY + (-1.8)*scale);
     glVertex2f(baseX + (-0.6)*scale, baseY + (-1.8)*scale);
     glVertex2f(baseX + (0.6)*scale, baseY + (1.6)*scale);
     glVertex2f(baseX + (0.4)*scale, baseY + (1.6)*scale);
     glEnd();
-
+    
     // angka 6
     glRectf(baseX + (0.8)*scale, baseY + (1.6)*scale, baseX + (1.8)*scale, baseY + (1.8)*scale);
     glRectf(baseX + (0.8)*scale, baseY + (-1.8)*scale, baseX + (1.0)*scale, baseY + (1.6)*scale);
     glRectf(baseX + (1.0)*scale, baseY + (-1.8)*scale, baseX + (1.8)*scale, baseY + (-1.6)*scale);
     glRectf(baseX + (1.6)*scale, baseY + (-1.6)*scale, baseX + (1.8)*scale, baseY + (0.0)*scale);
     glRectf(baseX + (1.0)*scale, baseY + (-0.2)*scale, baseX + (1.6)*scale, baseY + (0.0)*scale);
-
+    
     // glRectf(c_nim.x + 0.0, c_nim.y+0.0, c_nim.x + 0.5, c_nim.y + 0.2);
+    glColor3f(1.0, 0.0, 0.0);
+    glRectf(player.x * CELL_SIZE, player.y * CELL_SIZE,(player.x + 1) * CELL_SIZE, (player.y + 1) * CELL_SIZE);
 
     glFlush();
 }
@@ -161,6 +161,10 @@ void reInitMaze(){
 
     c_nim.x = x;
     c_nim.y = y;
+
+    // untuk reset player ke tengahatas 
+    player.x = WIDTH / 2;
+    player.y = HEIGHT - 1;
 
     glutDisplayFunc(display);
     glutPostRedisplay();
