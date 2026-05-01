@@ -95,14 +95,15 @@ void display()
 
         float radius = 40.0f;
 
-        float camX = cx + radius * cos(rotY * 3.14159 / 180.0f) * cos(rotX * 3.14159 / 180.0f);
-        float camY = radius * sin(rotX * 3.14159 / 180.0f);
-        float camZ = cz + radius * sin(rotY * 3.14159 / 180.0f) * cos(rotX * 3.14159 / 180.0f);
-
-        gluLookAt(camX, camY, camZ,
-                cx, 0.0, cz,
+        //20
+        gluLookAt(40, 40, 40,   // posisi kamera tetap
+                cx, 0.0, cz,  // lihat ke tengah maze
                 0.0, 1.0, 0.0);
 
+        glTranslatef(cx, 0.0f, cz); // pindah ke tengah maze
+        glRotatef(rotY, 0.0f, 1.0f, 0.0f); // rotasi kiri-kanan
+        glRotatef(rotX, 1.0f, 0.0f, 0.0f); // rotasi atas-bawah
+        glTranslatef(-cx, 0.0f, -cz); // balik lagi
         // FLOOR
         drawFloor3D();
 
