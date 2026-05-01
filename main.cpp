@@ -14,9 +14,15 @@
 #include <time.h>
 #include "maze.h"
 #include <stdio.h>
+//18
+#include <math.h>
 
 Maze maze; // variabel global maze
 bool is3D = false; //1
+//15
+float rotY = 45.0f; // kiri-kanan
+float rotX = 30.0f; // atas-bawah
+
 // Struktur posisi (player & objek lain)
 struct movement
 {
@@ -87,9 +93,15 @@ void display()
         float cx = (WIDTH * CELL_SIZE) / 2.0f;
         float cz = (HEIGHT * CELL_SIZE) / 2.0f;
 
-        gluLookAt(cx + 28.0, 30.0, cz + 28.0,
-                  cx, 0.0, cz,
-                  0.0, 1.0, 0.0);
+        float radius = 40.0f;
+
+        float camX = cx + radius * cos(rotY * 3.14159 / 180.0f) * cos(rotX * 3.14159 / 180.0f);
+        float camY = radius * sin(rotX * 3.14159 / 180.0f);
+        float camZ = cz + radius * sin(rotY * 3.14159 / 180.0f) * cos(rotX * 3.14159 / 180.0f);
+
+        gluLookAt(camX, camY, camZ,
+                cx, 0.0, cz,
+                0.0, 1.0, 0.0);
 
         // FLOOR
         drawFloor3D();
@@ -297,7 +309,17 @@ void keyboard(unsigned char key, int x, int y)
     case 'V':
         is3D = !is3D;
         break;
+    case 'j': case 'J': rotY -= 5.0f; break;
+    case 'l': case 'L': rotY += 5.0f; break;
+
+    case 'i': case 'I': rotX -= 5.0f; break;
+    case 'k': case 'K': rotX += 5.0f; break;
     }
+    //17
+    if (rotY > 360.0f) rotY -= 360.0f;
+    if (rotY < 0.0f)   rotY += 360.0f;
+    glutPostRedisplay();
+
 }
 
 float randomFloat() {
