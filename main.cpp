@@ -104,10 +104,9 @@ void display()
         glRotatef(rotY, 0.0f, 1.0f, 0.0f); // rotasi kiri-kanan
         glRotatef(rotX, 1.0f, 0.0f, 0.0f); // rotasi atas-bawah
         glTranslatef(-cx, 0.0f, -cz); // balik lagi
-        // FLOOR
-        drawFloor3D();
 
-        // WALL
+        //21
+        // WALL dulu
         for (int y = 0; y < HEIGHT; y++)
         {
             for (int x = 0; x < WIDTH; x++)
@@ -121,6 +120,11 @@ void display()
 
         // PLAYER
         drawWall3D(player.x, player.y, 1.5f, true);
+
+        // TRANSPARAN
+        glDepthMask(GL_FALSE);  
+        drawFloor3D();
+        glDepthMask(GL_TRUE);
     }
 
     glutSwapBuffers();
@@ -137,7 +141,7 @@ void drawWall3D(float x, float z, float h, bool isPlayer)
 
     if (isPlayer)
     {
-        // 🔴 PLAYER (merah)
+        // PLAYER (merah)
         // ATAS
         glColor3f(1.0, 0.3, 0.3);
         glVertex3f(x0, h, z0);
@@ -174,7 +178,7 @@ void drawWall3D(float x, float z, float h, bool isPlayer)
     }
     else
     {
-        // 🔵 WALL (biru)
+        // WALL (biru)
         // ATAS
         glColor3f(0.4, 0.7, 1.0);
         glVertex3f(x0, h, z0);
@@ -209,6 +213,13 @@ void drawWall3D(float x, float z, float h, bool isPlayer)
         glVertex3f(x0,0,z0+s);
         glVertex3f(x0,h,z0+s);
         glVertex3f(x0,h,z0);
+
+        // BAWAH
+        glColor3f(0.2, 0.4, 0.9);
+        glVertex3f(x0, 0, z0);
+        glVertex3f(x0+s, 0, z0);
+        glVertex3f(x0+s, 0, z0+s);
+        glVertex3f(x0, 0, z0+s);
     }
 
     glEnd();
@@ -219,7 +230,7 @@ void drawFloor3D()
     float w = WIDTH * CELL_SIZE;
     float d = HEIGHT * CELL_SIZE;
 
-    glColor3f(0.7, 0.7, 0.7); // abu terang
+    glColor4f(0.7, 0.7, 0.7, 0.3f); // abu terang
 
     glBegin(GL_QUADS);
     glVertex3f(0,0,0);
